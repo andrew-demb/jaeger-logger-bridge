@@ -28,6 +28,7 @@ class JaegerLoggerDecorator extends AbstractLogger
         if (null !== ($span = $this->span->getSpan()) && $span->isSampled()) {
             $span->addLog(new UserLog($message, $level, $this->normalizer->normalize($context)));
         }
+
         $this->logger->log($level, $message, $context);
     }
 }
